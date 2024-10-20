@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Web Store Review Analyzer",
+  "version": "1.0",
+  "description": "Analyze reviews for Chrome Web Store extensions",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "options_page": "index.html",
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chrome.google.com/webstore/detail/*"],
+      "js": ["src/contentScript.ts"]
+    }
+  ]
+}
